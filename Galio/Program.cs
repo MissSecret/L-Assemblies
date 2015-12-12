@@ -281,7 +281,7 @@ namespace GalioSharp
             if (config.SubMenu("Misc").Item("InterruptSpellsR").GetValue<bool>()
                 && args.DangerLevel == Interrupter2.DangerLevel.High)
             {
-                if (r.IsReady() && player.Distance(sender, true) < r.RangeSqr)
+                if (r.IsReady() && player.Distance(sender, true) < r.Range)
                 {
                     r.Cast();
                 }
@@ -560,11 +560,11 @@ namespace GalioSharp
                     {
                         var circle = MEC.GetMec(subGroup);
 
-                        if (r.IsReady() && flashSlot.IsReady() && circle.Center.Distance(player) <= 425
+                        if (r.IsReady() && flashSlot.IsReady() && circle.Center.Distance(player) <= 420
                             && circle.Radius <= r.Range)
                         {
                             player.Spellbook.CastSpell(flashSlot, circle.Center.To3D());
-                            Utility.DelayAction.Add(50, () => r.Cast());
+                            Utility.DelayAction.Add(45, () => r.Cast());
                         }
                     }
                 }
